@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "weenture",
+  "version": "1.0",
+  "description": "RPG browser game based on web navigation",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "webNavigation",
+    "http://*/*" ,
+    "https://*/*"
+  ]
+}
