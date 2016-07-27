@@ -6,7 +6,11 @@ function isDevMode() {
 }
 */
 
-const toArrayBuffer = (str) => {
+const bufferToString = (buffer) => {
+  return String.fromCharCode.apply(null, new Uint16Array(buffer));
+};
+
+const stringToBuffer = (str) => {
   const buf = new ArrayBuffer(str.length * 2);
   const bufView = new Uint16Array(buf);
   for (let i=0, strLen=str.length; i<strLen; i++) {
@@ -25,7 +29,7 @@ let ws = null;
   };
 
   ws.onmessage = function(evt) {
-    console.log('message received');
+    console.log(bufferToString(evt.data));
   };
 
   ws.onclose = function(){
@@ -35,11 +39,10 @@ let ws = null;
 })();
 
 chrome.webNavigation.onCompleted.addListener(function(data) {
-  console.log(data);
   const http = data.url.startsWith('http://') || data.url.startsWith('https://');
   if (data.frameId !== 0 || !http) return;
 
   if(ws.readyState === 1) {
-    ws.send(toArrayBuffer(data.url));
+    ws.send(stringToBuffer(data.url));
   }
 });

@@ -1,17 +1,16 @@
 {
-  "name": "webventure-server",
+  "name": "weenture",
   "version": "1.0.0",
-  "description": "Websocket server for Webventure",
-  "main": "server/index.js",
+  "description": "Websocket server for weenture",
   "scripts": {
-    "test": "mocha tests/"
+    "test": "mocha ./tests/chrome && go test ./tests/server"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/goenning/webventure.git"
+    "url": "https://github.com/goenning/weenture.git"
   },
   "bugs": {
-    "url": "https://github.com/goenning/webventure/issues"
+    "url": "https://github.com/goenning/weenture/issues"
   },
   "author": "Guilherme Oenning <oenning.ti@gmail.com> (http://goenning.net/)",
   "license": "GPL-3.0",
@@ -19,10 +18,6 @@
     "websocket",
     "rpg"
   ],
-  "dependencies": {
-    "express": "^4.14.0",
-    "ws": "^1.1.1"
-  },
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.1.1",
